@@ -58,7 +58,7 @@ protected:
 };
 ```
 
-```
+```c++
 #include "ClientController.h"
 #include "CNetChannel/Private/Log/CNetChannelLog.h"
 #include "Protocols/CNetBaseProtocols.h"
