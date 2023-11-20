@@ -58,13 +58,13 @@ protected:
 
 	virtual void Close() override;
 
-	virtual void LinkFailure() override;
+	virtual void LinkFailure() override;		// 连接失败
+	
+	virtual void Upgrade() override;			// 需要更新版本
 
-	virtual void Upgrade() override;
+	virtual void LinkSucceed() override;		// 连接成功
 
-	virtual void LinkSucceed() override;
-
-	int32 Temp;
+	int32 Temp;									// 临时测试
 };
 ```
 
@@ -178,10 +178,6 @@ protected:
 	
 	virtual void ReceiveProtocol(uint32 InProtocol) override;
 
-	virtual void LinkFailure() override;
-
-	virtual void Upgrade() override;
-
 
 };
 ```
@@ -236,19 +232,7 @@ void UServerController::ReceiveProtocol(uint32 InProtocol)
 	}
 }
 
-void UServerController::LinkFailure()
-{
-	Super::LinkFailure();
 
-	UE_LOG(LogCNetChannel, Warning, TEXT(" Server  LinkFailure"));
-
-}
-
-void UServerController::Upgrade()
-{
-	Super::Upgrade();
-	UE_LOG(LogCNetChannel, Warning, TEXT("Should   Upgrade"));
-}
 ```
 
 
