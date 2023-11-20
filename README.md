@@ -1,10 +1,10 @@
-# CNetChannel	
+# CNetChannel  for Unreal Engine(虚幻引擎) 
 
 ## 个人b站主页网址 ： https://b23.tv/wiHB3qk   
 
 
 
-#### 在虚幻引擎（Unreal Engine）中,可以快速搭建分布式服务器和客户端的插件 || Plug-ins for distributed servers and clients can be quickly set up
+#### 虚幻引擎（Unreal Engine）中,可以快速搭建分布式服务器和客户端的插件 || Plug-ins for distributed servers and clients can be quickly set up
 
 #### 内容：
 
