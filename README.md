@@ -123,6 +123,7 @@ void UClientController::Close()
 
 void UClientController::ReceiveProtocol(uint32 InProtocol)
 {
+	Super::ReceiveProtocol(InProtocol);
 	switch (InProtocol)
 	{
 	default:
@@ -218,6 +219,7 @@ void UServerController::Close()
 
 void UServerController::ReceiveProtocol(uint32 InProtocol)
 {
+	Super::ReceiveProtocol(InProtocol);
 	switch (InProtocol)
 	{
 	default:
