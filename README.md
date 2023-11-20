@@ -1,4 +1,9 @@
-# CNetChannel
+# CNetChannel	
+
+## 个人b站主页网址 ： https://b23.tv/wiHB3qk   
+
+
+
 #### 可以快速搭建分布式服务器和客户端的插件 || Plug-ins for distributed servers and clients can be quickly set up
 
 #### 内容：
@@ -12,8 +17,6 @@
 
 
 ​	**该插件为本人  大三  第一学期研制(2023/11)，吸取并总结了其他大佬的经验而潜心研制，梦想就是能自己搭建一套完整的网络游戏，不论是服务器还是客户端，如果你有需要，希望这个插件能帮助到你！**
-
-​	**个人b站主页网址 ： https://b23.tv/wiHB3qk   **
 
 
 
@@ -66,11 +69,11 @@ protected:
 
 	virtual void LinkFailure() override;		// 连接失败
 	
-	virtual void Upgrade() override;			// 需要更新版本
+	virtual void Upgrade() override;		// 需要更新版本
 
 	virtual void LinkSucceed() override;		// 连接成功
 
-	int32 Temp;									// 临时测试
+	int32 Temp;							// 临时测试
 };
 ```
 
@@ -90,7 +93,7 @@ void UClientController::Init()
 
 
 
-	UE_LOG(LogCNetChannel, Warning, TEXT("		Client                UClientController          Init				"));
+	UE_LOG(LogCNetChannel, Warning, TEXT("Client  Init"));
 
 }
 
@@ -101,7 +104,7 @@ void UClientController::Tick(float DeltaTime)
 
 	if (Temp++ == 250)
 	{
-		FString TestString = TEXT(" Hello  I am  Client   Test   Msg        hhhhhhhhhhhhhhhhhhhhh");
+		FString TestString = TEXT(" Hello  I am  Client   Test   Msg");
 
 		NET_PROTOCOLS_SEND(CNetP_Test, TestString)
 			Temp = 0;
@@ -115,7 +118,7 @@ void UClientController::Close()
 {
 	Super::Close();
 
-	UE_LOG(LogCNetChannel, Warning, TEXT("		Client                UClientController          Close							"));
+	UE_LOG(LogCNetChannel, Warning, TEXT("Client Close"));
 }
 
 void UClientController::ReceiveProtocol(uint32 InProtocol)
@@ -229,7 +232,7 @@ void UServerController::ReceiveProtocol(uint32 InProtocol)
 		UE_LOG(LogCNetChannel, Error, TEXT("Recv Client Msg = %s"), *RecvMsg);
 
 
-		FString TestString = TEXT(" Hello  I am  Server   Test   Msg        hhhhhhhhhhhhhhhhhhhhh");
+		FString TestString = TEXT(" Hello  I am  Server   Test   Msg ");
 
 		NET_PROTOCOLS_SEND(CNetP_Test, TestString)
 
@@ -245,7 +248,7 @@ void UServerController::ReceiveProtocol(uint32 InProtocol)
 
 
 
-**在这个示例中 我们让客户的 向 服务端发送一个 消息 FString TestString = TEXT(" Hello  I am  Client   Test   Msg        hhhhhhhhhhhhhhhhhhhhh"); ** 
+**在这个示例中 我们让客户的 向 服务端发送一个 消息 FString TestString = TEXT(" Hello  I am  Client   Test   Msg "); ** 
 
 **然后会传到服务端 ReceiveProtocol方法里面  然后我们接受 并且 返回 消息  打印 消息**
 
