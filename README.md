@@ -331,15 +331,15 @@ DEFINITION_NET_PROTOCOLS(Test,900018)
 
 ​	**在此 我解释一下 一些 特殊的 其他的 按字面意思理解**
 
-​	**bReliable 为 是否 可靠   如果可靠 就会采用补包策略，相对 不可靠 性能较低**
+​	**bReliable 		为  是否 可靠   如果可靠 就会采用补包策略，相对 不可靠 性能较低**
 
-​	**ThreadNums 线程池中 线程的个数**
+​	**ThreadNums 		为  线程池中 线程的个数**
 
-​	**OutLinkTime 心跳 超时连接的时间**
+​	**OutLinkTime 		为  心跳超时连接的时间**
 
-​	**HeartBeatInterval 心跳的频率 多次时间心跳一次**
+​	**HeartBeatInterval     为  心跳的频率 多久心跳一次**
 
-​	**SecretKey 密钥 用于加密 传输信息 需两端 密钥相同**
+​	**SecretKey             为  密钥 用于加密 传输信息 需两端 密钥相同**
 
 
 
