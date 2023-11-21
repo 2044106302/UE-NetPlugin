@@ -35,7 +35,7 @@ public:
 		return false;
 	}
 
-
+	FCNetConnection* GetLocalConnection() const;
 	
 	virtual bool Init(int32 InPort = 0);
 	

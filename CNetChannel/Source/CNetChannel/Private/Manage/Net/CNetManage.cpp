@@ -4,6 +4,7 @@
 #include "SocketSubsystem.h"
 #include "Log/CNetChannelLog.h"
 #include "Manage/Connection/CNetConnectionManage.h"
+#include "Manage/CNetManage.h"
 
 FCNetManage::FCNetManage(const ECNetType InNetType) : NetType(InNetType),bInit(false)
 {
@@ -21,6 +22,12 @@ FCNetManage* FCNetManage::CreateNetManage(ECNetType InNetType)
 	
 }
 
+
+FCNetConnection* FCNetManage::GetLocalConnection() const
+{
+
+	return ConnectionManage->Connections.LocalConnection.Get();
+}
 
 bool FCNetManage::Init(int32 InPort)
 {

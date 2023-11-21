@@ -6,7 +6,7 @@
 
 class FInternetAddr;
 class FCNetConnectionManage;
-class  FCNetConnection : public TSharedFromThis<FCNetConnection>
+class  CNETCHANNEL_API FCNetConnection : public TSharedFromThis<FCNetConnection>
 {
 protected:
 	
