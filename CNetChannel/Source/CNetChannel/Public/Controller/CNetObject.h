@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 
-// #include "CNetObject.generated.h"
+DECLARE_MULTICAST_DELEGATE_OneParam(FCNetReceiveDelegate,uint32)
 
 class FCNetConnection;
 
@@ -11,12 +11,15 @@ class CNETCHANNEL_API UCNetController
 	friend class FCNetConnection;
 	friend class FCUDPNetConnection;
 	friend class FCUDPNetConnectionManage;
+	
 
 protected:
 	using Super = UCNetController;
 	FCNetConnection* Conn;
 
 public:
+	
+	FCNetReceiveDelegate CNetReceiveDelegate;
 
 	template<class T>
 	static T* Type() 
@@ -42,17 +45,7 @@ public:
 
 	virtual void ReceiveProtocol(uint32 InProtocol) ;
 
-protected:
 
-	void RequestObtainTheRemoteIdleConnectionNum();
-
-	void RemoteIdleNum(int32 InNum);
-
-	virtual void LinkFailure() ;
-
-	virtual void Upgrade() ;
-
-	virtual void LinkSucceed();
-
+	virtual void LinkOutTime();
 
 };

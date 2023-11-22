@@ -48,8 +48,7 @@ void FCNetConnection::Tick(const float DeltaTime)
 	
 	if (CurrentTime - LastTime > FCNetGlobalInfo::Get()->GetConfig().OutLinkTime)
 	{
-		UE_LOG(LogCNetChannel, Error, TEXT("CurrentTime  = %f || LastTime = %f ||  FCNetGlobalInfo::Get()->GetConfig().OutLinkTime = %f"), CurrentTime, LastTime, FCNetGlobalInfo::Get()->GetConfig().OutLinkTime);
-		UE_LOG(LogCNetChannel,Error,TEXT("FCNetGlobalInfo::Get()->GetConfig().OutLinkTime"));
+		if(Controller) Controller->LinkOutTime();
 		Close();
 	}
 
@@ -278,7 +277,7 @@ void FCNetConnection::CheckLoginTimeOut(float DeltaTime)
 		{
 			TimeoutLink = 0.0f;
 
-			if (Controller) Controller->LinkFailure();
+			if (Controller) Controller->LinkOutTime();
 	
 		}
 		

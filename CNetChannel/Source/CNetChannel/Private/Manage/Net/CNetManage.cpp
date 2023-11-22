@@ -29,6 +29,11 @@ FCNetConnection* FCNetManage::GetLocalConnection() const
 	return ConnectionManage->Connections.LocalConnection.Get();
 }
 
+UCNetController* FCNetManage::GetLocalController() const
+{
+	return  ConnectionManage->GetLocalController();
+}
+
 bool FCNetManage::Init(int32 InPort)
 {
 	return false;

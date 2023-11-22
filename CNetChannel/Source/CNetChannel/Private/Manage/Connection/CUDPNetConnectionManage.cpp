@@ -433,7 +433,9 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 
 	FCNetConnection* Conn = InConnection.Get();
 	
-	if (NetType == ECNetType::Server)
+
+
+	if (NetType == ECNetType::Server)  // ---------------------------------------------------------------------------------------------------------------------------Server
 	{
 		switch (BaseHead.ProtocolsNumber)
 		{
@@ -481,7 +483,9 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 					InConnection->SetGuid(ID);
 					InConnection->SetState(ECNetConnectionState::WaitJoin);
 
-					NET_PROTOCOLS_SEND(CNetP_LinkWelcomJoin);
+					NET_PROTOCOLS_SEND(CNetP_LinkWelcomJoin)
+
+					NET_PROTOCOLS_SEND(CNetP_LinkJoinSuccess)
 #if DEBUG_INFO
 					UE_LOG(LogCNetChannel, Error, TEXT("------------------------------CNetP_LinkWantJoin"));
 #endif
@@ -490,7 +494,6 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 				{
 					NET_PROTOCOLS_SEND(CNetP_LinkFailure)
 
-						InConnection->GetController()->LinkFailure();
 						InConnection->Close();
 #if DEBUG_INFO
 						UE_LOG(LogCNetChannel, Error, TEXT("------------------------------CNetP_LinkFailure"));
@@ -509,7 +512,7 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 			}
 
 	}
-	else // Client
+	else // ---------------------------------------------------------------------------------------------------------------------------Client
 	{
 
 		switch (BaseHead.ProtocolsNumber)
@@ -529,9 +532,6 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 			{
 				NET_PROTOCOLS_SEND(CNetP_LinkJoinSuccess);
 
-
-				InConnection->GetController()->LinkSucceed();
-
 				InConnection->StartSendHeartBeat();
 #if DEBUG_INFO
 				UE_LOG(LogCNetChannel, Error, TEXT("---------------------CNetP_LinkWelcomJoin"));
@@ -543,7 +543,6 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 
 				NET_PROTOCOLS_RECEIVE(CNetP_Upgrade)
 
-				InConnection->GetController()->Upgrade();
 				InConnection->Close();
 #if DEBUG_INFO
 				UE_LOG(LogCNetChannel, Error, TEXT("---------------------CNetP_Upgrade"));
@@ -555,11 +554,6 @@ void FCUDPNetConnectionManage::VerificationConnectionInfo(TArray<uint8>& InData,
 			{
 
 				NET_PROTOCOLS_RECEIVE(CNetP_LinkFailure)
-
-
-
-				InConnection->GetController()->LinkFailure();
-
 
 				InConnection->Close();
 #if DEBUG_INFO

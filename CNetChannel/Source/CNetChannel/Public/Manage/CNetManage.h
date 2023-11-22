@@ -37,6 +37,8 @@ public:
 
 	FCNetConnection* GetLocalConnection() const;
 	
+	UCNetController* GetLocalController() const;
+	
 	virtual bool Init(int32 InPort = 0);
 	
 	virtual  bool Init(const FString& InIP,uint16 InPort);

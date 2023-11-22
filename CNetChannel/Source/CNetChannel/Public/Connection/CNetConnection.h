@@ -79,9 +79,7 @@ public:
 		const auto SpawnObject = [this]()
 		{
 				if (Controller) return;
-
-
-
+			
 				Controller = MakeShared<T>();
 
 				if (Controller)

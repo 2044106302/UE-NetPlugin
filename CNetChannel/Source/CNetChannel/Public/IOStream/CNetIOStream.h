@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "../Private/Log/CNetChannelLog.h"
 
 class CNETCHANNEL_API FCNetIOStream
@@ -37,7 +37,9 @@ public:
 	template<class T>
 	FCNetIOStream& operator<<(T &InValue)
 	{
-		Write(reinterpret_cast<void*>(&InValue), sizeof(T));
+		T* Temp = const_cast<T*>(&InValue);
+
+		Write(reinterpret_cast<void*>(Temp), sizeof(T));
 		return *this;
 	}
 

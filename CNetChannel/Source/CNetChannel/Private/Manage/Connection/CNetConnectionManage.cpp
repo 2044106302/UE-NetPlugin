@@ -23,6 +23,7 @@ bool FCNetConnectionManage::Init(uint32 InIP, uint16 InPort)
 {
 	bAsynchronousListening = FCNetGlobalInfo::Get()->GetConfig().bAsynchronousListening;
 
+	
 	Connections.RemoteConnections.SetNum(NetType == ECNetType::Server ?  FCNetGlobalInfo::Get()->GetConfig().MaxConnections : 0);
 	
 	

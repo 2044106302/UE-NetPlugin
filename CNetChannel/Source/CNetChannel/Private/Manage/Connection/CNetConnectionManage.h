@@ -27,7 +27,9 @@ public:
 	virtual bool Init(uint32 InIP,uint16 InPort);
 
 	virtual  void Tick(const float DeltaTime);
-	
+
+
+	UCNetController* GetLocalController() const { return  Connections.LocalConnection->GetController().Get(); }
 	
 	FORCEINLINE FSocket* GetSocket() const;
 
