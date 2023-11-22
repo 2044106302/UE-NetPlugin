@@ -66,14 +66,10 @@ protected:
 	virtual void ReceiveProtocol(uint32 InProtocol) override;
 
 	virtual void Close() override;
+    
+	virtual void LinkOutTime();	// 连接超时
 
-	virtual void LinkFailure() override;		// 连接失败
-	
-	virtual void Upgrade() override;		// 需要更新版本
-
-	virtual void LinkSucceed() override;		// 连接成功
-
-	int32 Temp;							// 临时测试
+	int32 Temp;							
 };
 ```
 
@@ -144,26 +140,12 @@ void UClientController::ReceiveProtocol(uint32 InProtocol)
 	
 }
 
-void UClientController::LinkFailure()
+void UClientController::LinkOutTime()
 {
-	Super::LinkFailure();
 
 
 }
 
-void UClientController::Upgrade()
-{
-	Super::Upgrade();
-
-
-}
-
-void UClientController::LinkSucceed()
-{
-	Super::LinkSucceed();
-
-
-}
 
 
 ```
@@ -329,6 +311,8 @@ DEFINITION_NET_PROTOCOLS(Test,900018)
 
 
 
+
+
 ### 最后 看看我们的配表：
 
 ​	**在此 我解释一下 一些 特殊的 其他的 按字面意思理解**
@@ -365,3 +349,10 @@ SecretKey=www
 
 ```
 
+
+
+
+
+### 注意事项：
+
+#### 	1.如果是在游戏线程中，千万别用bAsynchronousListening（多线程异步模式）将其设为0
